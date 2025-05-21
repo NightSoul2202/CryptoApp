@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoApp.Models
 {
-    public class CoinResponse
+    public class CoinResponse<T>
     {
         public T Data { get; set; }
         public long Timestamp { get; set; }
