@@ -1,5 +1,6 @@
 ﻿using CryptoApp.Services;
 using CryptoApp.Services.Interfaces;
+using CryptoApp.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel.Design;
@@ -42,8 +43,18 @@ namespace CryptoApp
             services.AddSingleton<IConfiguration>(configuration);
             services.AddSingleton<ICoinData, CoinData>();
             services.AddSingleton<IMarketData, MarketData>();
+            services.AddSingleton<INavigateData, NavigateData>(provider => new NavigateData(((MainWindow)Current.MainWindow).MainFrame));
+            services.AddSingleton<MainViewModel>();
+            services.AddSingleton<CoinDetailsViewModel>();
+            services.AddSingleton<SearchViewModel>();
 
+            ServiceProvider = services.BuildServiceProvider();
 
+            var mainWindow = new MainWindow();
+            var navigateData = ServiceProvider.GetRequiredService<INavigateData>();
+            mainWindow.Show();
+
+            navigateData.NavigateTo<MainViewModel>();
         }
     }
 
