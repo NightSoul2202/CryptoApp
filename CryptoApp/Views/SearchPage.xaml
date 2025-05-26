@@ -3,12 +3,33 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CryptoApp.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="SearchPage">
 
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="200" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Search" Command="{Binding SearchCommand}" Width="59"/>
+        </StackPanel>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding SearchResults}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Price (USD)" Width="100" DisplayMemberBinding="{Binding PriceUsd, StringFormat='C'}"/>
+                    <GridViewColumn Header="Details" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Details" Width="70" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding DataContext.NavigateToDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}" CommandParameter="{Binding}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

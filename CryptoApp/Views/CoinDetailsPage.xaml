@@ -1,14 +1,42 @@
 ﻿<Page x:Class="CryptoApp.Views.CoinDetailsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CryptoApp.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       Title="CoinDetailsPage">
 
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding Coin.Name}" FontSize="24" Foreground="{StaticResource WhiteText}" Margin="5"/>
+
+        <StackPanel Grid.Row="1" Margin="5">
+            <TextBlock Text="{Binding Coin.Id, StringFormat='ID: {0}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.Rank, StringFormat='Rank: {0}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.Symbol, StringFormat='Symbol: {0}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.PriceUsd, StringFormat='Price (USD): {0:F3}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.MarketCapUsd, StringFormat='Market Cap (USD): {0:F3}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.VolumeUsd24Hr, StringFormat='24h Volume (USD): {0:F3}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.ChangePercent24Hr, StringFormat='24h Change (%): {0:F3}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.Vwap24Hr, StringFormat='24h VWAP (USD): {0:F3}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.Supply, StringFormat='Supply: {0:F0}'}" Foreground="{StaticResource WhiteText}"/>
+            <TextBlock Text="{Binding Coin.MaxSupply, StringFormat='Max Supply: {0:F0}', FallbackValue='Max Supply: N/A'}" Foreground="{StaticResource WhiteText}"/>
+        </StackPanel>
+
+        <lvc:CartesianChart Grid.Row="2" Series="{Binding Series}" XAxes="{Binding XAxes}" Margin="5" ZoomMode="X" />
+
+        <ListView Grid.Row="3" ItemsSource="{Binding Markets}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Exchange" Width="150" DisplayMemberBinding="{Binding ExchangeId}"/>
+                    <GridViewColumn Header="Price (USD)" Width="100" DisplayMemberBinding="{Binding PriceUsd, StringFormat='F3'}"/>
+                    <GridViewColumn Header="Volume (USD)" Width="150" DisplayMemberBinding="{Binding VolumeUsd24Hr, StringFormat='F3'}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

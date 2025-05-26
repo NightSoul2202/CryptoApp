@@ -25,7 +25,7 @@
             <TextBlock Text="Меню навігації" Foreground="{StaticResource WhiteText}" FontSize="16" FontWeight="Bold" Margin="15,15,15,5" Opacity="0.9"/>
             <Separator Background="{StaticResource MediumGrayBackground}" Margin="10,0,10,10" Opacity="0.5"/>
             <ListBox SelectedItem="{Binding SelectedMenuItem}"
-                     ItemSource="{Binding MenuItems}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                     ItemsSource="{Binding MenuItems}" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListBoxItem Content="Main Page" Tag="MainViewModel"/>
                 <ListBoxItem Content="Search Page" Tag="SearchViewModel"/>
             </ListBox>
