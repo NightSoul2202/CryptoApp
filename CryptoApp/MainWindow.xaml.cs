@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using CryptoApp.Services.Interfaces;
+using CryptoApp.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +22,8 @@ namespace CryptoApp
         public MainWindow()
         {
             InitializeComponent();
+            var navigateService = App.ServiceProvider.GetRequiredService<INavigateData>();
+            DataContext = new MainWindowViewModel(navigateService);
         }
     }
 }
