@@ -23,10 +23,10 @@ namespace CryptoApp.Services
 
         public async Task<Coin> GetCoinAsync(string search)
         {
-            var url = $"assets/{search}";
-            var coin = await GetProcess<Coin>(url);
+            var url = $"assets?search={search}&limit=1";
+            var coins = await GetProcess<List<Coin>>(url);
 
-            return coin;
+            return coins[0];
         }
 
         public async Task<List<Coin>> GetTopCoinsAsync(int count)
