@@ -27,7 +27,7 @@ namespace CryptoApp.Services
                 page.DataContext = App.ServiceProvider.GetService<TViewModel>();
                 if(page.DataContext is IInitializable initializable)
                 {
-                    initializable.Initialize(parameter);
+                    initializable.InitializeAsync(parameter);
                 }
                 _frame.Navigate(page);
             }

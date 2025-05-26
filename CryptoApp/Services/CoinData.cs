@@ -29,6 +29,14 @@ namespace CryptoApp.Services
             return coins[0];
         }
 
+        public async Task<List<PriceHistory>> GetPriceHistoryAsync(string id, string interval)
+        {
+            var url = $"assets/{id}/history?interval={interval}";
+            var histories = await GetProcess<List<PriceHistory>>(url);
+
+            return histories;
+        }
+
         public async Task<List<Coin>> GetTopCoinsAsync(int count)
         {
             var url = $"assets?limit={count}";

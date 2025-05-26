@@ -8,6 +8,6 @@ namespace CryptoApp.Services.Interfaces
 {
     public interface IInitializable
     {
-        void Initialize(object parameter = null);
+        void InitializeAsync(object parameter = null);
     }
 }

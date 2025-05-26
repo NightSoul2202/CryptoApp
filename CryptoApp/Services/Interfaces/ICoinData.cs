@@ -11,5 +11,6 @@ namespace CryptoApp.Services.Interfaces
     {
         Task<List<Coin>> GetTopCoinsAsync(int count);
         Task<Coin> GetCoinAsync(string search);
+        Task<List<PriceHistory>> GetPriceHistoryAsync(string id, string interval);
     }
 }
