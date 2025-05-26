@@ -29,18 +29,11 @@ namespace CryptoApp.Services
 
         private async Task<TType> GetProcess<TType>(string url) where TType : class, new()
         {
-            try
-            {
-                var responseMessage = await _httpClient.GetAsync(url);
-                responseMessage.EnsureSuccessStatusCode();
-                var content = await responseMessage.Content.ReadAsStringAsync();
-                var returnObject = JsonConvert.DeserializeObject<CoinResponse<TType>>(content);
-                return returnObject?.Data ?? new TType();
-            }
-            catch (Exception ex)
-            {
-                return new TType();
-            }
+            var responseMessage = await _httpClient.GetAsync(url);
+            responseMessage.EnsureSuccessStatusCode();
+            var content = await responseMessage.Content.ReadAsStringAsync();
+            var returnObject = JsonConvert.DeserializeObject<CoinResponse<TType>>(content);
+            return returnObject?.Data ?? new TType();
         }
     }
 }

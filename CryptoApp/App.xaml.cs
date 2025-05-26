@@ -29,13 +29,13 @@ namespace CryptoApp
                 .Build();
 
             var services = new ServiceCollection();
+            var apiKey = configuration["CoinCapApi:ApiKey"];
+
             services.AddSingleton<HttpClient>(provider =>
             {
-                var apiKey = configuration["CoinCapApi:ApiKey"];
-
                 var client = new HttpClient();
                 client.BaseAddress = new Uri("https://rest.coincap.io/v3/");
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer: {apiKey}");
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
 
                 return client;
             });
