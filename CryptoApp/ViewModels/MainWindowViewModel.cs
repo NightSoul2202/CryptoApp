@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoApp.ViewModels
 {
-    public class MainViewModel
+    public class MainWindowViewModel
     {
     }
 }

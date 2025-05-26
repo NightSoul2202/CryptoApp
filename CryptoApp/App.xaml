@@ -3,6 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CryptoApp">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="PrimaryGreen" Color="#4CAF50"/>
+        <SolidColorBrush x:Key="DarkGreen" Color="#2E7D32"/>
+        <SolidColorBrush x:Key="BlackBackground" Color="#212121"/>
+        <SolidColorBrush x:Key="DarkGrayBackground" Color="#303030"/>
+        <SolidColorBrush x:Key="MediumGrayBackground" Color="#424242"/>
+        <SolidColorBrush x:Key="WhiteText" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="LightGrayText" Color="#BDBDBD"/>
+        <SolidColorBrush x:Key="DisabledGreen" Color="#A5D6A7"/>
+        
     </Application.Resources>
 </Application>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoApp.ViewModels
 {
-    internal class CoinDetailsViewModel
+    public class CoinDetailsViewModel
     {
     }
 }
