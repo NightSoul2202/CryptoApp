@@ -47,9 +47,8 @@ The following additional tasks have been completed:
 
 4. Additional Information Page
 
-![{089EAE95-7615-4561-B893-F3ED5613953B}](https://github.com/user-attachments/assets/9a12e346-3666-4c8d-b2c
+![{089EAE95-7615-4561-B893-F3ED5613953B}](https://github.com/user-attachments/assets/9a12e346-3666-4c8d-b2c2-bd755aecaaf9)
 
-Translated with DeepL.com (free version)
 
 Українською:
 
